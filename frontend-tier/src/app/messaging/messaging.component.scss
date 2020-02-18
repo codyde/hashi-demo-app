@@ -1,0 +1,41 @@
+img.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+}
+
+.form.center {
+    text-align: center;
+    display: inline-block;
+}
+
+input[type="textarea"], textarea {
+    background-color : #d1d1d1; 
+  }
+
+@media screen and (min-width: 481px) {
+nav { display: block; }  /* show it on small screens */
+input { width: 500px; }
+}
+
+@media screen and (min-width: 0px) and (max-width: 480px) {
+nav { display: none; }   /* hide it elsewhere */
+}
+
+@media screen and (min-width: 0px) and (max-width: 480px) {
+    .hiddenicons { display: block; }  /* show it on small screens */
+    }
+
+@media screen and (min-width: 481px) {
+    .hiddenicons { display: none; }  /* show it on small screens */
+    }
+
+@media screen and (min-width: 481px) {
+    nav { display: block; }  /* show it on small screens */
+    input { width: 500px; }
+    }
+    
+@media screen and (min-width: 0px) and (max-width: 480px) {
+    nav { display: none; }   /* hide it elsewhere */
+    }

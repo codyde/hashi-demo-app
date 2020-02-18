@@ -1,0 +1,62 @@
+<div>
+        <div class="clr-row">
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            Real-Time Messaging Demo
+                        </div>
+                        <div class="card-block">
+                            <div class="card-text">
+                                The "Messaging" component consists of an Angular (ClarityUI) frontend hosted on NGINX which communicates 
+                                with a Python Flask API application backend. This API tier provides 2 way communication between the client
+                                side frontend and the Postgresql database backend utilizing websockets to provide real-time updates!
+                                <br>
+                                <br>
+                                Enter a Title and a Message below to see the updates!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <div>
+        <form #f="ngForm" class="clr-form clr-form-horizontal" (ngSubmit)="onSubmit(f.value)">
+            <div class="clr-form-control">
+                <label for="example" class="clr-control-label">Title</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="text" [(ngModel)]="message.title" name="title" id="title"
+                            placeholder="Enter the Message Title" class="clr-text" required>
+                        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="clr-form-control">
+                <label for="example" class="clr-control-label">Message</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="textfield" [(ngModel)]="message.text" name="text" id="text"
+                            placeholder="Message Text" class="clr-textarea" required>
+                        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" *ngFor="let text of messages">
+                <div class="card">
+                    <div class="card-header">
+                        {{text.title}}
+                    </div>
+                    <div class="card-block">
+                        <div class="card-text">
+                            {{text.text}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

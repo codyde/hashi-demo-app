@@ -1,0 +1,41 @@
+# use this with `docker-compose up` against a generic Docker end-point (e.g. standalone Docker)
+version: "3.7"
+
+services:
+
+  frontend:
+    build:
+      context: ./frontend-tier
+      dockerfile: ./Dockerfile
+    image: harbor.humblelab.com/library/cmbu-app-frontend:latest
+    depends_on:
+      - pyapi
+    ports:
+      - 80:80
+    networks:
+      - cmbu-network
+
+  pyapi:
+    build:
+      context: ./app-tier
+      dockerfile: ./Dockerfile
+    image: harbor.humblelab.com/library/cmbu-app-backend:latest
+    depends_on:
+      - db
+    networks:
+      - cmbu-network
+
+  db:
+    build:
+      context: ./db-tier
+      dockerfile: ./Dockerfile
+    image: harbor.humblelab.com/library/cmbu-db-app:latest
+    environment:
+      POSTGRES_USER: postgres
+    networks:
+      - cmbu-network
+
+
+networks:
+  cmbu-network:
+    driver: bridge # a user defined bridge is required; the default bridge network doesn't support name resolution

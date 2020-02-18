@@ -1,0 +1,10 @@
+@media screen and (min-width: 481px) {
+    .outer { text-align: center; }  /* show it on small screens */
+    .img {
+        display:inline-block;
+    }
+    }
+    
+    @media screen and (min-width: 0px) and (max-width: 480px) {
+    .outer { display: none; }   /* hide it elsewhere */
+    }
