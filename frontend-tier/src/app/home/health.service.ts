@@ -18,17 +18,11 @@ export class HealthService {
 
   private healthURL: string = 'http://' + window.location.host + '/api/health'
 
-  private consulURL: string = 'http://consul.service.consul:8500/v1/kv/features'
-
   constructor(private http: HttpClient){ 
   }
 
   getHealth(){
     return this.http.get(this.healthURL, httpOptions)
-  }
-
-  getConsul(){
-    return this.http.get(this.consulURL, httpOptions)
   }
 
 }

@@ -17,7 +17,7 @@ export interface Flag {
 })
 export class HomeComponent implements OnInit {
   private socket; 
-  private consul;
+
   public healthData: Health = <Health>{}
 
   public isEnabled: Flag = <Flag>{};
@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
   constructor(private hs: HealthService, private toastr: ToastrService) {}
 
   ngOnInit() {
-    this.     getFeature()
     this.interval = setInterval(() => {
       this.hs.getHealth().subscribe((data: Health) => {
         this.healthData = data;
@@ -49,13 +48,6 @@ export class HomeComponent implements OnInit {
     this.socket = io(this.url);
     this.socket.on('health event', (healthData)=> {
       this.showCards = true;
-    })
-  }
-
-  getFeature() {
-    this.hs.getConsul().subscribe((result: Flag) => {
-    this.isEnabled = result;
-    console.log(this.isEnabled) 
     })
   }
 

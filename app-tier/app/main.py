@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from gevent import monkey
 monkey.patch_all(thread=False)
 import requests
+import os
 import json
 from flask_cors import CORS
 import psycopg2
@@ -17,12 +18,19 @@ socketio = SocketIO(app)
 CORS(app)
 thread = None
 
+pghost = os.environ.get('POSTGRES_HOST')
+pguser = os.environ.get('POSTGRES_USER')
+pgpass = os.environ.get('POSTGRES_PASSWORD')
+pgport = os.environ.get('POSTGRES_PORT')
+pgdb = os.environ.get('POSTGRES_DATABASE')
+
+
 @app.route("/api/post", methods=["POST"])
 def insert_post():
     req = request.get_json()
     _title = req['title']
     _text = req['text']
-    conn = psycopg2.connect("host=127.0.0.1 port=5432 dbname=posts user=postgres password=postgres_password")
+    conn = psycopg2.connect(f"host=${pghost} port=${pgport} dbname=${pgdb} user=${pguser} password=${pgpass}")
     cur = conn.cursor()
     cur.execute("INSERT INTO textData (title, text) VALUES (%s, %s)", (_title, _text))
     conn.commit()
@@ -36,7 +44,7 @@ def insert_post():
 
 @app.route("/api/posts", methods=["GET"])
 def get_posts():
-    conn = psycopg2.connect("host=127.0.0.1 port=5432 dbname=posts user=postgres password=postgres_password")
+    conn = psycopg2.connect(f"host=${pghost} port=${pgport} dbname=${pgdb} user=${pguser} password=${pgpass}")
     cur = conn.cursor(cursor_factory=RealDictCursor)
     data = cur.execute('SELECT * FROM textData ORDER BY id DESC')
     test = cur.fetchall()
