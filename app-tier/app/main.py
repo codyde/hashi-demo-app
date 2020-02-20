@@ -26,7 +26,7 @@ def insert_post():
     req = request.get_json()
     _title = req['title']
     _text = req['text']
-    conn = psycopg2.connect(f"host=${pghost} port={pgport} dbname={pgdb} user={pguser} password={pgpass}")
+    conn = psycopg2.connect(f"host={pghost} port={pgport} dbname={pgdb} user={pguser} password={pgpass}")
     cur = conn.cursor()
     cur.execute("INSERT INTO textData (title, text) VALUES (%s, %s)", (_title, _text))
     conn.commit()
