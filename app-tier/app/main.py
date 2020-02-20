@@ -1,6 +1,4 @@
 from flask import Flask, jsonify, request
-from gevent import monkey
-monkey.patch_all(thread=False)
 import requests
 import os
 import json
@@ -8,7 +6,6 @@ from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from flask_socketio import SocketIO, emit
-from threading import Thread
 
 
 app = Flask(__name__)
@@ -16,7 +13,6 @@ app = Flask(__name__)
 app.secret_key = "super secret key"
 socketio = SocketIO(app)
 CORS(app)
-thread = None
 
 pghost = os.environ.get('POSTGRES_HOST')
 pguser = os.environ.get('POSTGRES_USER')
