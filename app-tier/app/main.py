@@ -20,6 +20,12 @@ pgpass = os.environ.get('POSTGRES_PASSWORD')
 pgport = os.environ.get('POSTGRES_PORT')
 pgdb = os.environ.get('POSTGRES_DATABASE')
 
+print(pghost)
+print(pguser)
+print(pgpass)
+print(pgport)
+print(pgdb)
+
 
 @app.route("/api/post", methods=["POST"])
 def insert_post():
