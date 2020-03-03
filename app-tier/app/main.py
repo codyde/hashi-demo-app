@@ -8,6 +8,7 @@ from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from flask_socketio import SocketIO, emit
+from threading import Thread
 
 
 app = Flask(__name__)
@@ -15,18 +16,13 @@ app = Flask(__name__)
 app.secret_key = "super secret key"
 socketio = SocketIO(app)
 CORS(app)
+thread = None
 
 pghost = os.environ.get('POSTGRES_HOST')
 pguser = os.environ.get('POSTGRES_USER')
 pgpass = os.environ.get('POSTGRES_PASSWORD')
 pgport = os.environ.get('POSTGRES_PORT')
 pgdb = os.environ.get('POSTGRES_DATABASE')
-
-print(pghost)
-print(pguser)
-print(pgpass)
-print(pgport)
-print(pgdb)
 
 
 @app.route("/api/post", methods=["POST"])
@@ -86,4 +82,4 @@ def after_request(response):
     return response
 
 if __name__ == "__main__":
-    socketio.run(app, host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0',debug=True)

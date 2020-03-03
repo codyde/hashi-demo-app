@@ -1,5 +1,15 @@
 <div>
     <div class="outer">
+        <div class=row *ngIf="!showCards"> 
+            <div class="progress danger">
+                <progress max="100" value="0" data-displayval="0%"></progress>
+                <span class="danger-text">
+                    <clr-icon size="24" shape="exclamation-circle">;</clr-icon>
+                    Connection to backend timed out. >
+                    <a>Try again</a>
+                </span>
+            </div>
+        </div>
         <div class=row *ngIf="showCards"> 
             <img class="logo" width="15%" alt="TF Logo" src="../assets/Terraform_VerticalLogo_FullColor.png">
             <img class="logo" width="15%" alt="Vault Logo" src="../assets/Vault_VerticalLogo_FullColor.png">
@@ -11,7 +21,7 @@
             <div>
                 <div class="card">
                     <div class="card-header">
-                        Welcome to My Demo Application! 
+                        Welcome to the Demo Zone!
                     </div>
                     <div class="card-block">
                         <div class="card-text">
