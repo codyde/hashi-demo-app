@@ -1,9 +1,4 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: custom-application
----
-apiVersion: v1
 kind: Pod
 metadata:
   name: db
@@ -40,38 +35,6 @@ spec:
     - name: POSTGRES_PORT
       value: "5432"
     - name: POSTGRES_DATABASE
-      value: "posts"
+      value: "posts" 
     ports:
     - containerPort: 5000
----
-apiVersion: v1 
-kind: Pod
-metadata:
-  name: app-frontend
-  annotations:
-    "consul.hashicorp.com/connect-inject": "true"
-    "consul.hashicorp.com/connect-service-port": "http"
-    "consul.hashicorp.com/connect-service-upstreams": "pyapi:5000"
-  namespace: custom-application
-  labels:
-    app: bootcamp
-spec:
-  containers:
-  - name: frontend
-    image: codydearkland/app-frontend:latest
-    ports:
-    - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  namespace: custom-application
-  name: frontend
-spec:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
-  selector:
-    app: bootcamp
-  type: LoadBalancer
