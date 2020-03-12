@@ -22,7 +22,7 @@ export class MessagingComponent implements OnInit {
 
   public interval: any;
 
-  @ViewChild("f", {static: false})
+  @ViewChild("f")
   formValues; // Added this
 
   public message: Message = <Message>{};
