@@ -3,10 +3,13 @@ import { HealthService } from './health.service';
 import { Health } from './health';
 import * as io from 'socket.io-client';
 import { ToastrService } from 'ngx-toastr';
-import * as consul from 'consul'
 
 export interface Flag {
   status: string
+}
+
+export interface DBData {
+  data: string[]
 }
 
 
@@ -20,6 +23,8 @@ export class HomeComponent implements OnInit {
 
   public healthData: Health = <Health>{}
 
+  public dbHealthData: DBData = <DBData>{}
+
   public isEnabled: Flag = <Flag>{};
 
   private url = 'http://' + window.location.host
@@ -29,6 +34,8 @@ export class HomeComponent implements OnInit {
   public connect: boolean;
 
   public showCards:boolean = false;
+
+  public dbHealth:boolean = false;
 
   public showText:boolean = true;
 
@@ -40,10 +47,16 @@ export class HomeComponent implements OnInit {
         this.healthData = data;
         this.showCards = true;
         if (this.connect == false) {
-          this.showSuccess()
+          this.showAPISuccess()
         }
         this.connect = true;
-      }, err => this.handleError());
+      }, err => this.apiError());
+    }, 4000);
+    this.interval = setInterval(() => {
+      this.hs.getDBHealth().subscribe((dbdata: DBData) => {
+        this.dbHealthData = dbdata;
+        this.dbHealth = true;
+      }, err => this.dbError());
     }, 4000);
     this.socket = io(this.url);
     this.socket.on('health event', (healthData)=> {
@@ -51,15 +64,24 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  handleError() {
-    this.toastr.error('Unable to reach backend services', 'Connection Error');
+  apiError() {
+    this.toastr.error('Unable to reach API service', 'Connection Error');
     this.showCards = false;
     this.connect = false;
   }
 
+  dbError() {
+    this.toastr.error('Unable to reach database service', 'Connection Error');
+    this.dbHealth = false;
+  }
 
-  showSuccess() {
-    this.toastr.success('Socket communication enabled with backend service', 'Connection Established');
+
+  showAPISuccess() {
+    this.toastr.success('API Connectivity Healthy', 'Connection Established');
+  }
+
+  showDBSuccess() {
+    this.toastr.success('Database Connectivity Healthy', 'Connection Established');
   }
 
   showFailure() {
