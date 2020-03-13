@@ -1,6 +1,6 @@
 <div>
     <div class="outer">
-        <div class=row *ngIf="showCards"> 
+        <div class=row *ngIf="showCards && dbHealth"> 
             <img class="logo" width="15%" alt="TF Logo" src="../assets/Terraform_VerticalLogo_FullColor.png">
             <img class="logo" width="15%" alt="Vault Logo" src="../assets/Vault_VerticalLogo_FullColor.png">
             <img class="logo" width="15%" alt="Consul Logo" src="../assets/Consul_VerticalLogo_FullColor.png">
@@ -8,21 +8,60 @@
         </div>
     </div>
     <div class="clr-row">
-            <div>
-                <div class="card">
-                    <div class="card-header">
-                        Welcome to My Demo Application! 
+        <div>
+            <div class="card">
+                <div class="card-header">
+                    Multi-tier Application Demo
+                </div>
+                <div class="card-block">
+                    <div class="card-text">
+                        This application is designed to use Consul Connect in a Kubernetes environment to demonstrate service mesh
+                        functionaltiy. Intentions are created within Consul to dictate whether communication is "Allowed" or "Denied".
+                        Application communication occurs through sidecar proxies on each container pod. 
+                        <br>
+                        The application itself is a 3-Tier application consisting of an Angular frontend running behind Nginx,
+                        a Python (Flask) based API, and a PostgreSQL database. The UI framework is Clarity UI. You can see the
+                        code for this project on <a href="https://github.com/codyde/hashi-demo-app">GitHub</a>.
                     </div>
-                    <div class="card-block">
-                        <div class="card-text">
-                            This application is meant to demo functionality within HashiCorp Consul. Items on this page will render
-                            based on configurations within Consul. 
-                            <br>
-                            The application itself is a 3-Tier application consisting of an Angular (8) Frontend running behind Nginx,
-                            a Python (Flask) based API, and a PostgreSQL database. The UI framework is Clarity UI. 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col-12">
+            <h1>Platform Connectivity </h1>
+        </div>
+        <div class="clr-col-12 clr-col-sm-3">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">API Connectivity</h4>
+                    <div class="progress-block">
+                        <label>Status</label>
+                        <div class="progress loop warning" *ngIf="!showCards">
+                            <div class="progress-meter"></div>
+                        </div>
+                        <div class="progress success" *ngIf="showCards">
+                            <progress value="100" max="100"></progress>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="clr-col-12 clr-col-sm-3">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Database Connectivity</h4>
+                    <div class="progress-block">
+                        <label>Status</label>
+                        <div class="progress loop warning" *ngIf="!dbHealth">
+                            <div class="progress-meter"></div>
+                        </div>
+                        <div class="progress success" *ngIf="dbHealth">
+                            <progress value="100" max="100"></progress>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+</div>

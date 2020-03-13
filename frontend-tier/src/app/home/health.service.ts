@@ -17,12 +17,17 @@ const httpOptions = {
 export class HealthService {
 
   private healthURL: string = 'http://' + window.location.host + '/api/health'
+  private databaseHealth: string = 'http://' + window.location.host + '/api/posts'
 
   constructor(private http: HttpClient){ 
   }
 
   getHealth(){
     return this.http.get(this.healthURL, httpOptions)
+  }
+
+  getDBHealth(){
+    return this.http.get(this.databaseHealth, httpOptions)
   }
 
 }
