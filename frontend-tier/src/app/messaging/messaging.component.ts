@@ -35,7 +35,7 @@ export class MessagingComponent implements OnInit {
 ngOnInit() {
   console.log("init")
   this.refreshData()
-  this.socket = io(this.url);
+  this.socket = io(this.url, {transports: ['polling']});
   this.socket.on('my event', (message) => { this.messages = message; });
   console.log(this.message)
   //this.interval = setInterval(() => {

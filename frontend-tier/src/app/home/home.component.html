@@ -1,10 +1,10 @@
 <div>
     <div class="outer">
         <div class=row *ngIf="showCards && dbHealth"> 
-            <img class="logo" width="15%" alt="TF Logo" src="../assets/Terraform_VerticalLogo_FullColor.png">
-            <img class="logo" width="15%" alt="Vault Logo" src="../assets/Vault_VerticalLogo_FullColor.png">
-            <img class="logo" width="15%" alt="Consul Logo" src="../assets/Consul_VerticalLogo_FullColor.png">
-            <img class="logo" width="15%" alt="Nomad Logo" src="../assets/Nomad_VerticalLogo_FullColor.png">
+            <img class="logo" width="15%" alt="TF Logo" src="../assets/Terraform_VerticalLogo_White.png">
+            <img class="logo" width="15%" alt="Vault Logo" src="../assets/Vault_VerticalLogo_White.png">
+            <img class="logo" width="15%" alt="Consul Logo" src="../assets/Consul_VerticalLogo_White.png">
+            <img class="logo" width="15%" alt="Nomad Logo" src="../assets/Nomad_VerticalLogo_White.png">
         </div>
     </div>
     <div class="clr-row">
@@ -15,9 +15,9 @@
                 </div>
                 <div class="card-block">
                     <div class="card-text">
-                        This application is designed to use Consul Connect in a Kubernetes environment to demonstrate service mesh
-                        functionaltiy. Intentions are created within Consul to dictate whether communication is "Allowed" or "Denied".
-                        Application communication occurs through sidecar proxies on each container pod. 
+                        This application is designed to use Consul Connect in a Kubernetes environment to demonstrate service mesh functionaltiy. 
+                        Intentions are created within Consul to dictate whether communication is "Allowed" or "Denied". Application communication 
+                        occurs through sidecar proxies on each container pod.
                         <br>
                         The application itself is a 3-Tier application consisting of an Angular frontend running behind Nginx,
                         a Python (Flask) based API, and a PostgreSQL database. The UI framework is Clarity UI. You can see the

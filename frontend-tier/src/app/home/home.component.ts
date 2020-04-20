@@ -12,7 +12,6 @@ export interface DBData {
   data: string[]
 }
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -39,7 +38,9 @@ export class HomeComponent implements OnInit {
 
   public showText:boolean = true;
 
-  constructor(private hs: HealthService, private toastr: ToastrService) {}
+
+  constructor(private hs: HealthService, private toastr: ToastrService) {
+  }
 
   ngOnInit() {
     this.interval = setInterval(() => {
@@ -58,7 +59,7 @@ export class HomeComponent implements OnInit {
         this.dbHealth = true;
       }, err => this.dbError());
     }, 4000);
-    this.socket = io(this.url);
+    this.socket = io(this.url, {transports: ['polling']});
     this.socket.on('health event', (healthData)=> {
       this.showCards = true;
     })
