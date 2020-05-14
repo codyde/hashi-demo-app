@@ -3,6 +3,7 @@ import { HealthService } from './health.service';
 import { Health } from './health';
 import * as io from 'socket.io-client';
 import { ToastrService } from 'ngx-toastr';
+import { fadeInOnEnterAnimation } from 'angular-animations';
 
 export interface Flag {
   status: string
@@ -15,7 +16,11 @@ export interface DBData {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    fadeInOnEnterAnimation({ duration: 1000, delay: 200 })
+  ]
+
 })
 export class HomeComponent implements OnInit {
   private socket; 

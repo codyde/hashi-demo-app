@@ -1,13 +1,76 @@
 <div>
     <div class="outer">
-        <div class=row *ngIf="showCards && dbHealth"> 
-            <img class="logo" width="15%" alt="TF Logo" src="../assets/Terraform_VerticalLogo_White.png">
-            <img class="logo" width="15%" alt="Vault Logo" src="../assets/Vault_VerticalLogo_White.png">
-            <img class="logo" width="15%" alt="Consul Logo" src="../assets/Consul_VerticalLogo_White.png">
-            <img class="logo" width="15%" alt="Nomad Logo" src="../assets/Nomad_VerticalLogo_White.png">
+        <div class="clr-row home">
+            <div class="clr-col-12 clr-col-sm-2" [@fadeInOnEnter]>
+                <div class="card home">
+                    <div class="card-header">
+                        Terraform
+                    </div>
+                    <div class="card-block">
+                        <div class="card-text">
+                            <img class="logo" height="200px" alt="TF Logo"
+                                src="../assets/Terraform_VerticalLogo_FullColor_RGB.png">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-link"><a href="https://terraform.io">terraform.io</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="clr-col-12 clr-col-sm-2" [@fadeInOnEnter]>
+                <div class="card home">
+                    <div class="card-header">
+                        Vault
+                    </div>
+                    <div class="card-block">
+                        <div class="card-text">
+                            <img class="logo" height="200px" alt="Vault Logo"
+                                src="../assets/Vault_VerticalLogo_FullColor_RGB.png">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-link"><a
+                                href="https://vaultproject.io">vaultproject.io</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="clr-col-12 clr-col-sm-2" [@fadeInOnEnter]>
+                <div class="card home">
+                    <div class="card-header">
+                        Consul
+                    </div>
+                    <div class="card-block">
+                        <div class="card-text">
+                            <img class="logo" height="200px" alt="Consul Logo"
+                                src="../assets/Consul_VerticalLogo_FullColor_RGB.png">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-link"><a href="https://consul.io">consul.io</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="clr-col-12 clr-col-sm-2" [@fadeInOnEnter]>
+                <div class="card home">
+                    <div class="card-header">
+                        Nomad
+                    </div>
+                    <div class="card-block">
+                        <div class="card-text">
+                            <img class="logo" height="200px" alt="Nomad Logo"
+                                src="../assets/Nomad_VerticalLogo_FullColor_RGB.png">
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-link"><a
+                                href="https://nomadproject.io">nomadproject.io</a></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="clr-row">
+    <div class="clr-row" [@fadeInOnEnter]>
         <div>
             <div class="card">
                 <div class="card-header">
@@ -15,49 +78,62 @@
                 </div>
                 <div class="card-block">
                     <div class="card-text">
-                        This application is designed to use Consul Connect in a Kubernetes environment to demonstrate service mesh functionaltiy. 
-                        Intentions are created within Consul to dictate whether communication is "Allowed" or "Denied". Application communication 
-                        occurs through sidecar proxies on each container pod.
+                        This application is designed to demonstrate Consul functionality. Consul provides consistent
+                        network across clouds, both public and private. It provides solutions for Service Discovery,
+                        Health Checking, Service Network Automation and enables a service mesh for multiple runtime
+                        platforms. This application can be used to can demonstrate capabilities like
+                        <a href="https://www.consul.io/docs/connect/intentions.html">Intentions</a>,
+                        <a href="https://www.consul.io/docs/connect/l7-traffic-management.html"> L7 Routing</a>, and
+                        <a href="https://www.consul.io/docs/connect/observability.html">Observability</a>.
                         <br>
-                        The application itself is a 3-Tier application consisting of an Angular frontend running behind Nginx,
-                        a Python (Flask) based API, and a PostgreSQL database. The UI framework is Clarity UI. You can see the
-                        code for this project on <a href="https://github.com/codyde/hashi-demo-app">GitHub</a>.
+                        The application itself is a 3-Tier application consisting of an Angular frontend running behind
+                        Nginx, a Python (Flask) based API, and a PostgreSQL database. The UI framework is
+                        <a href="https://clarity.design">ClarityUI</a>. You can see the code for this project on
+                        <a href="https://github.com/codyde/hashi-demo-app">GitHub</a>.
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="clr-row">
-        <div class="clr-col-12">
-            <h1>Platform Connectivity </h1>
-        </div>
-        <div class="clr-col-12 clr-col-sm-3">
-            <div class="card">
-                <div class="card-block">
-                    <h4 class="card-title">API Connectivity</h4>
-                    <div class="progress-block">
-                        <label>Status</label>
-                        <div class="progress loop warning" *ngIf="!showCards">
-                            <div class="progress-meter"></div>
-                        </div>
-                        <div class="progress success" *ngIf="showCards">
-                            <progress value="100" max="100"></progress>
-                        </div>
-                    </div>
-                </div>
+    <div class="clr-row" [@fadeInOnEnter]>
+        <div class="card">
+            <div class="card-header">
+                Platform Connectivity
             </div>
-        </div>
-        <div class="clr-col-12 clr-col-sm-3">
-            <div class="card">
-                <div class="card-block">
-                    <h4 class="card-title">Database Connectivity</h4>
-                    <div class="progress-block">
-                        <label>Status</label>
-                        <div class="progress loop warning" *ngIf="!dbHealth">
-                            <div class="progress-meter"></div>
+            <div class="card-block">
+                <div class="card-text">
+                    <div class="clr-row">
+                        <div class="clr-col-lg-3 clr-col-sm-3">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h4 class="card-title">API Connectivity</h4>
+                                    <div class="progress-block">
+                                        <label>Status</label>
+                                        <div class="progress loop warning" *ngIf="!showCards">
+                                            <div class="progress-meter"></div>
+                                        </div>
+                                        <div class="progress success" *ngIf="showCards">
+                                            <progress value="100" max="100"></progress>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="progress success" *ngIf="dbHealth">
-                            <progress value="100" max="100"></progress>
+                        <div class="clr-col-lg-3 clr-col-sm-3">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h4 class="card-title">Database Connectivity</h4>
+                                    <div class="progress-block">
+                                        <label>Status</label>
+                                        <div class="progress loop warning" *ngIf="!dbHealth">
+                                            <div class="progress-meter"></div>
+                                        </div>
+                                        <div class="progress success" *ngIf="dbHealth">
+                                            <progress value="100" max="100"></progress>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

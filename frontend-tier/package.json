@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular-devkit/build-angular": "~0.900.4",
-    "@angular/animations": "^9.0.4",
+    "@angular/animations": "^9.1.2",
     "@angular/common": "^9.0.4",
     "@angular/compiler": "^9.0.4",
     "@angular/core": "^9.0.4",
@@ -27,6 +27,7 @@
     "@ngtools/webpack": "^8.3.25",
     "@types/socket.io": "^2.1.4",
     "@webcomponents/webcomponentsjs": "^2.4.2",
+    "angular-animations": "0.0.10",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.4",
     "ng2-charts": "^2.3.0",

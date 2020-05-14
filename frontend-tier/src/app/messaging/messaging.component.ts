@@ -4,6 +4,8 @@ import { PostsService } from "./posts.service";
 import { environment } from '../../environments/environment.prod';
 import { Observable } from "rxjs"
 import * as io from 'socket.io-client';
+import { fadeInOnEnterAnimation } from 'angular-animations';
+
 
 export interface Post {
   title: string;
@@ -13,7 +15,10 @@ export interface Post {
 @Component({
   selector: 'app-messaging',
   templateUrl: './messaging.component.html',
-  styleUrls: ['./messaging.component.scss']
+  styleUrls: ['./messaging.component.scss'],
+  animations: [
+    fadeInOnEnterAnimation({ duration: 1000, delay: 200 })
+  ]
 })
 export class MessagingComponent implements OnInit {
   private url = 'http://' + window.location.host

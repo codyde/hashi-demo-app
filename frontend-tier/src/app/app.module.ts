@@ -10,6 +10,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MessagingComponent } from './messaging/messaging.component';
 import { HomeComponent } from './home/home.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ServiceMeshComponent } from './service-mesh/service-mesh.component';
 
 
 
@@ -17,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     AppComponent,
     MessagingComponent,
+    ServiceMeshComponent,
     HomeComponent
   ],
   imports: [

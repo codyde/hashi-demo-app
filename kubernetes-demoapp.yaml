@@ -24,6 +24,8 @@ metadata:
   namespace: custom-application
   annotations:
     "consul.hashicorp.com/connect-inject": "true"
+    "consul.hashicorp.com/service-meta-version": "v2"
+    "consul.hashicorp.com/connect-service-port": "http"
     "consul.hashicorp.com/connect-service-upstreams": "db:5432,app-frontend:80"
 
 spec:
@@ -43,15 +45,17 @@ spec:
       value: "posts"
     ports:
     - containerPort: 5000
+      name: http
 ---
-apiVersion: v1 
+apiVersion: v1
 kind: Pod
 metadata:
   name: app-frontend
   annotations:
     "consul.hashicorp.com/connect-inject": "true"
-    "consul.hashicorp.com/connect-service-port": "http"
+    "consul.hashicorp.com/connect-service-port": "80"
     "consul.hashicorp.com/connect-service-upstreams": "pyapi:5000"
+    "consul.hashicorp.com/service-meta-version": "v2"
   namespace: custom-application
   labels:
     app: bootcamp
