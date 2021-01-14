@@ -1,14 +1,11 @@
 from flask import Flask, jsonify, request
 from gevent import monkey
 monkey.patch_all(thread=False)
-import requests
 import os
-import json
 from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from flask_socketio import SocketIO, emit
-from threading import Thread
+from flask_socketio import SocketIO
 
 
 app = Flask(__name__)
