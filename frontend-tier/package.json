@@ -34,7 +34,7 @@
     "ngx-avatar": "^3.7.0",
     "ngx-gravatar": "^8.1.0",
     "ngx-toastr": "^11.3.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "rxjs": "^6.5.4",
     "socket.io": "^2.3.0",
     "tslib": "^1.10.0",
